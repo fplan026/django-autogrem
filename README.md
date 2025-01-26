@@ -87,8 +87,9 @@ Make sure your prerequisites are satisfied:
 - [ ] [Create and activate your virtual environment](#create-virtual-environment)
 - [ ] [Install required packages](#install-required-packages)
 
-### Running the app locally
+### Running the development server locally
 Open a new terminal and navigate to the django project directory:
+
 ```bash
 cd /path/to/autogrem/autogrem
 ```
@@ -98,6 +99,15 @@ cd /path/to/autogrem/autogrem
 > cd /home/emmett/git-projects/autogrem/autogrem
 > ```
 
+To run the development server, issue the following command from the django project directory:
+
+```bash
+python manage.py runserver
+```
+
+Open a web browser and navigate to `http://localhost:8000`
+
+### Directory structure
 You'll notice that the directory structure seems a bit redundant. Below is a summary of the important parts of the basic structure:
 ```plaintext
 autogrem/                   <-- top level directory

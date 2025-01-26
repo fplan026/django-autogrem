@@ -11,11 +11,6 @@ from django.views.generic import DetailView, ListView
 from .forms import NewBill
 from .models import RecurringBill
 
-
-# def index(request):
-#     expenses = RecurringBill.objects.all()
-#     return render(request, 'finance/index.html', {'expenses': expenses})
-
 class IndexView(ListView):    
     """Extend the generic ListView view to take advantage of django's
     abstraction of the concept of “display a list of objects.”
@@ -39,10 +34,10 @@ class IndexView(ListView):
     # see autogrem/finance/templates/finance/index.html to see how we use it
     context_object_name = "expenses"
     
-    paginate_by=5
+    paginate_by=10
 
     def get_queryset(self) -> QuerySet[Any]:
-        return RecurringBill.objects.all()
+        return RecurringBill.objects.all().order_by("name")
 
 class RecurringBillDetailsView(DetailView):
     model = RecurringBill
@@ -65,26 +60,3 @@ def new_bill(request):
     else:
         form = NewBill()
     return render(request, 'finance/new_bill.html', {'form': form})
-
-# ...
-# def vote(request, question_id):
-#     bill = get_object_or_404(Question, pk=question_id)
-#     try:
-#         selected_choice = bill.choice_set.get(pk=request.POST["choice"])
-#     except (KeyError, Choice.DoesNotExist):
-#         # Redisplay the question voting form.
-#         return render(
-#             request,
-#             "polls/detail.html",
-#             {
-#                 "question": bill,
-#                 "error_message": "You didn't select a choice.",
-#             },
-#         )
-#     else:
-#         selected_choice.votes = F("votes") + 1
-#         selected_choice.save()
-#         # Always return an HttpResponseRedirect after successfully dealing
-#         # with POST data. This prevents data from being posted twice if a
-#         # user hits the Back button.
-#         return HttpResponseRedirect(reverse("polls:results", args=(bill.id,)))

@@ -1,4 +1,8 @@
 {% load static %}<!DOCTYPE html>
+
+{% comment %} Load django-widget-tweaks app {% endcomment %}
+{% load widget_tweaks %}
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -9,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'finance:index' %}">Autogrem</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Autogrem</a>
         </div>
     </nav>
     <div class="container mb-3">
