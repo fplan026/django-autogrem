@@ -1,0 +1,35 @@
+{% extends "finance/base.html" %}
+
+{% comment %} Load django-widget-tweaks app {% endcomment %}
+{% load widget_tweaks %}
+
+{% block title %}Create a New Bill{% endblock %}
+
+{% block content %}
+<form method="post" novalidate>
+    {% csrf_token %}
+    
+    {% for field in form.visible_fields %}
+    <div class="form-group">
+        <div class="row align-items-center mb-3">
+            <label for="{{ field.id_for_label }}" class="col-sm-2 col-form-label">{{ field.label }}</label>
+            <div class="col">
+                {% with WIDGET_ERROR_CLASS='is-invalid'%}
+                {% render_field field class="form-control self-align-start" %}
+                {% comment %} this only executed if form validation fails {% endcomment %}
+                {% if field.errors %}
+                {% for error in field.errors %}
+                <div class="invalid-feedback">
+                    {{ error }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <button type="submit" class="btn btn-success">Create</button>
+</form>
+{% endblock  %}

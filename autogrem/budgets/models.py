@@ -18,3 +18,6 @@ class Transaction(models.Model):
     # frequency
     class Meta:
         abstract = True
+
+class Income(Transaction):
+    f = models.CharField(max_length=10)
