@@ -82,7 +82,46 @@ py -m pip install -r requirements.txt
 ```
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Make sure your prerequisites are satisfied:
+- [ ] [Install python](#install-python)
+- [ ] [Create and activate your virtual environment](#create-virtual-environment)
+- [ ] [Install required packages](#install-required-packages)
+
+### Running the app locally
+Open a new terminal and navigate to the django project directory:
+```bash
+cd /path/to/autogrem/autogrem
+```
+
+> **Example usage:**
+> ```
+> cd /home/emmett/git-projects/autogrem/autogrem
+> ```
+
+You'll notice that the directory structure seems a bit redundant. Below is a summary of the important parts of the basic structure:
+```plaintext
+autogrem/                   <-- top level directory
+ |-- autogrem/              <-- django project directory
+ |    |-- autogrem/         <-- autogrem app directory
+ |    |    |-- __init__.py
+ |    |    |-- settings.py  <-- settings for entire project
+ |    |    +-- urls.py      <-- project URL routing
+ |    |-- finance/          <-- one of many possible "apps" within the project 
+ |    +-- manage.py         <-- script to run development server, tests, and more
+ +-- venv/                  <-- virtual environment (can be deleted and recreated anytime)
+```
+
+In this document and within the entire project, we will always refer to these main
+directories in the following way to avoid confusion:
+```plaintext
+autogrem/                   <-- top level directory
+ |-- autogrem/              <-- django project directory
+ |    |-- autogrem/         <-- autogrem app directory
+ |    |-- foo/              <-- "foo" app directory
+ |    |-- bar/              <-- "bar" app directory
+ |    |-- ...
+ +-- venv/                  <-- virtual environment
+```
 
 ## Support
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
