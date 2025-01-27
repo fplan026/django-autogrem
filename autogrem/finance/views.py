@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.views.generic import DetailView, ListView
 
 from .forms import NewBill
-from .models import RecurringBill
+from .models import Bill
 
 class IndexView(ListView):    
     """Extend the generic ListView view to take advantage of django's
@@ -37,11 +37,11 @@ class IndexView(ListView):
     paginate_by=10
 
     def get_queryset(self) -> QuerySet[Any]:
-        return RecurringBill.objects.all().order_by("name")
+        return Bill.objects.all().order_by("name")
 
 class RecurringBillDetailsView(DetailView):
-    model = RecurringBill
-    template_name = "finance/recurring_bill_detail.html"
+    model = Bill
+    template_name = "finance/bill_detail.html"
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)

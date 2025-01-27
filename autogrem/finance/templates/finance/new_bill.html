@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% comment %} Load django-widget-tweaks app {% endcomment %}
+{% load widget_tweaks %}
+
 {% block title %}Create a New Bill{% endblock %}
 
 {% block content %}
@@ -10,9 +13,13 @@
     <div class="form-group">
         <div class="row align-items-center mb-3">
             <label for="{{ field.id_for_label }}" class="col-sm-2 col-form-label">{{ field.label }}</label>
-            <div class="col">
+            <div class="col align-items-start">
                 {% with WIDGET_ERROR_CLASS='is-invalid'%}
-                {% render_field field class="form-control self-align-start" %}
+                {% if field|widget_type == 'checkboxinput' %}
+                {% render_field field class="form-check-input" %}
+                {% else %}
+                {% render_field field class="form-control" %}
+                {% endif %}
                 {% comment %} this only executed if form validation fails {% endcomment %}
                 {% if field.errors %}
                 {% for error in field.errors %}

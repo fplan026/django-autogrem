@@ -5,10 +5,10 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-<table class="table">
+<table class="table table-hover">
     <thead class="thead-inverse">
-        <tr>
-            <th>Expense</th>
+        <tr class="text-center">
+            <th class="text-start">Expense</th>
             <th>Amount</th>
             <th>Last Payment</th>
             <th>Next Payment on</th>
@@ -17,16 +17,16 @@
     </thead>
     <tbody>
         {% for expense in expenses %}
-        <tr>
-            <td>
-                {{ expense.name }}
+        <tr class="text-center">
+            <td class="text-start">
+                <a href="{{ expense.id }}">{{ expense.name }}</a>
             </td>
             <td>
-                {{ expense.amount }}
+                ${{ expense.amount }}
             </td>
-            <td class="align-middle">0</td>
-            <td class="align-middle">0</td>
-            <td class="align-middle">
+            <td>0</td>
+            <td>0</td>
+            <td>
                 <button type="button" class="btn btn-outline-primary">Modify</button>
                 <button type="button" class="btn btn-outline-danger">Delete</button>
             </td>

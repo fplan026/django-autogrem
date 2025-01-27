@@ -53,7 +53,7 @@ class TimeUnit(models.TextChoices):
     DAY_OF_WEEK = "DOW", _("Day of the week")
     DAY_OF_YEAR = "DOY", _("Day of the year")
 
-class RecurringBill(Transaction):
+class Bill(Transaction):
     """
     A recurring purchase with flexible duration options.
     """
